@@ -1,0 +1,430 @@
+bind_host: 0.0.0.0
+bind_port: 3000
+beta_bind_port: 0
+users:
+  - name: renedjawadi
+    password: $2a$10$SIX4QKGn9z3tc04K9QULHOG6.hnIFRHDNO3igjWvbjZtsXxNS5Cnm
+auth_attempts: 5
+block_auth_min: 15
+http_proxy: ""
+language: ""
+debug_pprof: false
+web_session_ttl: 720
+dns:
+  bind_hosts:
+    - 0.0.0.0
+  port: 53
+  statistics_interval: 90
+  querylog_enabled: true
+  querylog_file_enabled: true
+  querylog_interval: 2160h
+  querylog_size_memory: 1000
+  anonymize_client_ip: false
+  protection_enabled: true
+  blocking_mode: default
+  blocking_ipv4: ""
+  blocking_ipv6: ""
+  blocked_response_ttl: 10
+  parental_block_host: family-block.dns.adguard.com
+  safebrowsing_block_host: standard-block.dns.adguard.com
+  ratelimit: 100
+  ratelimit_whitelist: []
+  refuse_any: true
+  upstream_dns:
+    - https://dns10.quad9.net/dns-query
+    - 1.1.1.1
+    - 8.8.8.8
+  upstream_dns_file: ""
+  bootstrap_dns:
+    - 9.9.9.10
+    - 149.112.112.10
+    - 2620:fe::10
+    - 2620:fe::fe:10
+  all_servers: false
+  fastest_addr: false
+  fastest_timeout: 1s
+  allowed_clients: []
+  disallowed_clients: []
+  blocked_hosts:
+    - version.bind
+    - id.server
+    - hostname.bind
+  trusted_proxies:
+    - 127.0.0.0/8
+    - ::1/128
+  cache_size: 44194304
+  cache_ttl_min: 0
+  cache_ttl_max: 0
+  cache_optimistic: false
+  bogus_nxdomain: []
+  aaaa_disabled: false
+  enable_dnssec: false
+  edns_client_subnet: false
+  max_goroutines: 300
+  handle_ddr: true
+  ipset: []
+  ipset_file: ""
+  filtering_enabled: true
+  filters_update_interval: 24
+  parental_enabled: false
+  safesearch_enabled: false
+  safebrowsing_enabled: false
+  safebrowsing_cache_size: 1048576
+  safesearch_cache_size: 1048576
+  parental_cache_size: 1048576
+  cache_time: 30
+  rewrites: []
+  blocked_services: []
+  upstream_timeout: 10s
+  private_networks: []
+  use_private_ptr_resolvers: true
+  local_ptr_upstreams: []
+  serve_http3: false
+  use_http3_upstreams: false
+tls:
+  enabled: false
+  server_name: ""
+  force_https: false
+  port_https: 443
+  port_dns_over_tls: 853
+  port_dns_over_quic: 784
+  port_dnscrypt: 0
+  dnscrypt_config_file: ""
+  allow_unencrypted_doh: false
+  certificate_chain: ""
+  private_key: ""
+  certificate_path: ""
+  private_key_path: ""
+  strict_sni_check: false
+filters:
+  - enabled: true
+    url: https://adguardteam.github.io/AdGuardSDNSFilter/Filters/filter.txt
+    name: AdGuard DNS filter
+    id: 1
+  - enabled: true
+    url: https://adaway.org/hosts.txt
+    name: AdAway Default Blocklist
+    id: 2
+  - enabled: true
+    url: https://www.malwaredomainlist.com/hostslist/hosts.txt
+    name: MalwareDomainList.com Hosts List
+    id: 4
+  - enabled: true
+    url: https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts
+    name: StevenBlack
+    id: 1622802756
+  - enabled: true
+    url: http://sysctl.org/cameleon/hosts
+    name: sys
+    id: 1622802758
+  - enabled: true
+    url: https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt
+    name: simple
+    id: 1622802762
+  - enabled: true
+    url: https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt
+    name: SimpleAd
+    id: 1622802763
+  - enabled: true
+    url: https://www.sunshine.it/blacklist.txt
+    name: Sunshine
+    id: 1622802765
+  - enabled: true
+    url: https://raw.githubusercontent.com/deathbybandaid/piholeparser/master/Subscribable-Lists/CountryCodesLists/Germany.txt
+    name: Germany
+    id: 1622802766
+  - enabled: true
+    url: https://pgl.yoyo.org/adservers/serverlist.php?hostformat=adblockplus&showintro=1&mimetype=plaintext
+    name: Peter Lowe's List
+    id: 1622802767
+  - enabled: true
+    url: https://hblock.molinero.dev/hosts_adblock.txt
+    name: hblock
+    id: 1676579037
+  - enabled: true
+    url: https://big.oisd.nl
+    name: big oisd
+    id: 1676579038
+  - enabled: true
+    url: https://raw.githubusercontent.com/AcidReign81/synapse-admin/master/fallback.txt
+    name: fallback
+    id: 1679627201
+  - enabled: true
+    url: https://raw.githubusercontent.com/AcidReign81/adguardrules/main/homeassistant.txt?token=GHSAT0AAAAAACAZVH5GGWHZJFSPJZT44NL2ZBITVFA
+    name: homeassistant
+    id: 1679627202
+whitelist_filters: []
+user_rules:
+  - /^(.+[_.-])?adse?rv(er?|ice)?s?[0-9]*[_.-]/
+  - /^(.+[_.-])?telemetry[_.-]/
+  - /^ad([sxv]?[0-9]*|system)[_.-]([^.[:space:]]+\.){1,}|[_.-]ad([sxv]?[0-9]*|system)[_.-]/
+  - /^adim(age|g)s?[0-9]*[_.-]/
+  - /^adtrack(er|ing)?[0-9]*[_.-]/
+  - /^advert(s|is(ing|ements?))?[0-9]*[_.-]/
+  - /^aff(iliat(es?|ion))?[_.-]/
+  - /^analytics?[_.-]/
+  - /^banners?[_.-]/
+  - /^beacons?[0-9]*[_.-]/
+  - /^count(ers?)?[0-9]*[_.-]/
+  - /^mads\./
+  - /^pixels?[-.]/
+  - /^stat(s|istics)?[0-9]*[_.-]/
+  - (^|\.)samsungads\.com$
+  - (^|\.)appboy\.com$
+  - (^|\.)adjust\.com$
+  - mathid.mathtag.com
+  - www.furl.net
+  - app.adjust.com
+  - gate.hockeyapp.net
+  - braindotsapp.com
+  - secure.quantserve.com
+  - mobile.mediabrix.com
+  - '@@zeustracker.abuse.ch'
+  - '@@mirror1.malwaredomains.com'
+  - '@@||bitcoin.de^'
+  - '@@||ad-client.mediafe-prd.s.joyn.de^$important'
+  - '@@||amazon.de^$important'
+  - '@@||api.mobile.immobilienscout24.de^$important'
+  - '@@||www.joyclub.de^$important'
+  - '@@||www.sony.de^$important'
+  - '@@||www.poppen.de^$important'
+  - '@@||pb.media01.eu^$important'
+  - '@@||joyclub.de^$important'
+  - '@@||www.westlotto.de^$important'
+  - '@@||trk.klclick.com^$important'
+  - '@@||telemetry.api.2kcoretech.online^$important'
+  - '@@||mtdn994s.r.eu-central-1.awstrack.me^$important'
+  - ""
+dhcp:
+  enabled: false
+  interface_name: ""
+  local_domain_name: lan
+  dhcpv4:
+    gateway_ip: ""
+    subnet_mask: ""
+    range_start: ""
+    range_end: ""
+    lease_duration: 86400
+    icmp_timeout_msec: 1000
+    options: []
+  dhcpv6:
+    range_start: ""
+    lease_duration: 86400
+    ra_slaac_only: false
+    ra_allow_slaac: false
+clients:
+  runtime_sources:
+    whois: true
+    arp: true
+    rdns: true
+    dhcp: true
+    hosts: true
+  persistent:
+    - name: Amcrest Türklingel
+      tags:
+        - device_other
+      ids:
+        - 192.168.178.100
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Fernseher Wohnzimmer
+      tags:
+        - device_tv
+      ids:
+        - 192.168.176.38
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Foscam Küche
+      tags:
+        - device_other
+      ids:
+        - 192.168.178.22
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Foscam Schlafzimmer
+      tags:
+        - device_other
+      ids:
+        - 192.168.178.35
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: GOB Notebook Jenny
+      tags:
+        - device_laptop
+      ids:
+        - 192.168.178.120
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Logitech Harmony Hub
+      tags:
+        - device_other
+      ids:
+        - 192.168.178.121
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: MacBookPro von Rene
+      tags:
+        - device_laptop
+      ids:
+        - 192.168.176.20
+        - 192.168.176.46
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Nintendo Switch
+      tags:
+        - device_gameconsole
+      ids:
+        - 192.168.176.21
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Nokia Schlaftracker
+      tags:
+        - device_other
+      ids:
+        - 192.168.176.41
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: OptimusPrime
+      tags:
+        - device_nas
+      ids:
+        - 192.168.178.111
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Philips Hue Bridge
+      tags:
+        - device_other
+      ids:
+        - 192.168.178.123
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: Roborock
+      tags:
+        - device_other
+      ids:
+        - 192.168.178.71
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: iPad von Rene
+      tags:
+        - device_tablet
+      ids:
+        - 192.168.176.40
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: iPhone von Jenny
+      tags:
+        - device_phone
+      ids:
+        - 192.168.176.23
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+    - name: iPhone von Rene
+      tags:
+        - device_phone
+      ids:
+        - 192.168.176.22
+      blocked_services: []
+      upstreams: []
+      use_global_settings: true
+      filtering_enabled: false
+      parental_enabled: false
+      safesearch_enabled: false
+      safebrowsing_enabled: false
+      use_global_blocked_services: true
+log_file: ""
+log_max_backups: 0
+log_max_size: 100
+log_max_age: 3
+log_compress: false
+log_localtime: false
+verbose: false
+os:
+  group: ""
+  user: ""
+  rlimit_nofile: 0
+schema_version: 14
